@@ -1,0 +1,44 @@
+@model IEnumerable<Fornecedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fornecedores List</h1>
+<hr />
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.CNPJ)</th>
+            <th>@Html.DisplayNameFor(model => model.Segmento)</th>
+            <th>@Html.DisplayNameFor(model => model.CEP)</th>
+            <th>@Html.DisplayNameFor(model => model.Endereco)</th>
+            <th>@Html.DisplayNameFor(model => model.Foto)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.CNPJ)</td>
+                <td>@Html.DisplayFor(modelItem => item.Segmento)</td>
+                <td>@Html.DisplayFor(modelItem => item.CEP)</td>
+                <td>@Html.DisplayFor(modelItem => item.Endereco)</td>
+                <td><img src="@item.Foto" alt="Fornecedor Foto" style="max-width: 100px; max-height: 100px;" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
